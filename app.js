@@ -14,14 +14,21 @@ const app = express();
 // Middleware to parse JSON
 app.use(express.json());
 
-// CORS configuration
-const corsOptions = {
-    origin: ['http://localhost:3000', 'https://movieticketbooking-4fr9.onrender.com'], // Add your frontend URL here
-    optionsSuccessStatus: 200
-};
+// Dynamic CORS configuration
+const allowedOrigins = ['http://localhost:3000', 'https://movieticketbooking-4fr9.onrender.com'];
 
-// Use the CORS middleware with options
-app.use(cors(corsOptions));
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+  }
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200);
+  }
+  next();
+});
 
 // Route middleware
 app.use("/user", userRouter);
