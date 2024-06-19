@@ -16,7 +16,7 @@ app.use(express.json());
 
 // CORS configuration
 const corsOptions = {
-    origin: 'http://localhost:3000',
+    origin: ['http://localhost:3000', 'https://movieticketbooking-4fr9.onrender.com'], // Add your frontend URL here
     optionsSuccessStatus: 200
 };
 
@@ -30,8 +30,7 @@ app.use("/movie", movieRouter);
 app.use("/booking", bookingsRouter);
 
 // MongoDB connection
-const dbUri = `mongodb+srv://admin:${process.env.MONGODB_PASSWORD}@cluster0.iw5deb5.mongodb.net/
-  ?retryWrites=true&w=majority&appName=Cluster0`;
+const dbUri = `mongodb+srv://admin:${process.env.MONGODB_PASSWORD}@cluster0.iw5deb5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
 mongoose.connect(dbUri, {
   useNewUrlParser: true,
