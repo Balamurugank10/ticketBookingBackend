@@ -1,7 +1,6 @@
 import express from "express";
 
-//import path from "path";
-//import { addAdmin, adminLogin,  getAdmins } from  path.resolve(__dirname, '../controllers/admin-controller.js');
+
 
 import { addAdmin, adminLogin,  getAdmins } from "../controllers/admin-controller.js";
 

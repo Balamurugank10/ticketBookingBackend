@@ -15,7 +15,7 @@ const app = express();
 app.use(express.json());
 
 // Dynamic CORS configuration
-const allowedOrigins = ['http://localhost:3000', 'https://movieticketbooking-4fr9.onrender.com'];
+const allowedOrigins = ['http://localhost:3005', 'https://movieticketbooking-4fr9.onrender.com'];
 
 app.use((req, res, next) => {
   const origin = req.headers.origin;
