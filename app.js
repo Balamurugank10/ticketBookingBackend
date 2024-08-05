@@ -39,10 +39,7 @@ app.use("/booking", bookingsRouter);
 // MongoDB connection
 const dbUri = `mongodb+srv://admin:${process.env.MONGODB_PASSWORD}@cluster0.iw5deb5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
-mongoose.connect(dbUri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+mongoose.connect(dbUri)
   .then(() => {
     console.log("Connected to MongoDB");
 
